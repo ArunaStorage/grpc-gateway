@@ -62,7 +62,7 @@ jobs:
           echo IMAGE_ID=harbor.computational.bio.uni-giessen.de/scienceobjectsdb/core-api-gateway
           echo VERSION=$VERSION
 
-          echo "${{ secrets.HARBOR_PW }}" | docker login harbor.computational.bio.uni-giessen.de -u '${{ secrets.HARBOR_USER }}' --password-stdin
+          echo "${{ secrets.HARBORPW }}" | docker login harbor.computational.bio.uni-giessen.de -u '${{ secrets.HARBORUSER }}' --password-stdin
 
           HARBOR_IMAGE_ID=harbor.computational.bio.uni-giessen.de/scienceobjectsdb/core-api-gateway
 
