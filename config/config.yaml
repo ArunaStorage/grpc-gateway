@@ -1,0 +1,7 @@
+Config:
+    Gateway:
+        Port: 9000
+        GRPCEndpointHost: "core-server.core-storage-dev"
+        GRPCEndpointPort: 9000
+    Swagger:
+        Path: "/www/swagger-ui/"

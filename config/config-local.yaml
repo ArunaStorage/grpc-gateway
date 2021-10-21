@@ -1,0 +1,7 @@
+Config:
+    Gateway:
+        Port: 9000
+        GRPCEndpointHost: "api.core-server-dev.m1.k8s.computational.bio"
+        GRPCEndpointPort: 443
+    Swagger:
+        Path: "www/swagger/"
