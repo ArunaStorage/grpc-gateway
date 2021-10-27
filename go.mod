@@ -3,7 +3,6 @@ module github.com/ScienceObjectsDB/CORE-API-Gateway
 go 1.17
 
 require (
-	github.com/ScienceObjectsDB/go-api v0.0.0-20211024151632-69f107ac1e8c
 	github.com/gin-gonic/gin v1.7.4
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.6.0
 	github.com/jessevdk/go-flags v1.5.0
@@ -12,6 +11,7 @@ require (
 )
 
 require (
+	github.com/ScienceObjectsDB/go-api v0.1.1
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
@@ -35,9 +35,9 @@ require (
 	github.com/ugorji/go/codec v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
-	golang.org/x/sys v0.0.0-20211023085530-d6a326fbbf70 // indirect
+	golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20211021150943-2b146023228c // indirect
+	google.golang.org/genproto v0.0.0-20211027151537-807f52c398cb // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/ini.v1 v1.63.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
