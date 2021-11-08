@@ -7,11 +7,11 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.6.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/spf13/viper v1.9.0
-	google.golang.org/grpc v1.41.0
+	google.golang.org/grpc v1.42.0
 )
 
 require (
-	github.com/ScienceObjectsDB/go-api v0.1.1
+	github.com/ScienceObjectsDB/go-api v0.1.2-0.20211107192700-9700e66b9031
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
@@ -34,10 +34,10 @@ require (
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/ugorji/go/codec v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
-	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
-	golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
+	golang.org/x/net v0.0.0-20211105192438-b53810dc28af // indirect
+	golang.org/x/sys v0.0.0-20211106132015-ebca88c72f68 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20211027151537-807f52c398cb // indirect
+	google.golang.org/genproto v0.0.0-20211104193956-4c6863e31247 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/ini.v1 v1.63.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
