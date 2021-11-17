@@ -11,7 +11,7 @@ require (
 )
 
 require (
-	github.com/ScienceObjectsDB/go-api v0.1.2-0.20211107192700-9700e66b9031
+	github.com/ScienceObjectsDB/go-api v0.1.2-0.20211117110517-083168991be1
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect

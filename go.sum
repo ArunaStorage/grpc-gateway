@@ -47,6 +47,8 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/ScienceObjectsDB/go-api v0.1.2-0.20211107192700-9700e66b9031 h1:jf2rDIeW+zxb/0woiz71RNkzzpmbZxjd4lU9C80YygY=
 github.com/ScienceObjectsDB/go-api v0.1.2-0.20211107192700-9700e66b9031/go.mod h1:x7GFQck5HU5XDt/f9snaZaKfEjkvQ5zI6NT8n6T9h4o=
+github.com/ScienceObjectsDB/go-api v0.1.2-0.20211117110517-083168991be1 h1:2XJIG4Obb2MXKlNjy1rzMCe8g1jRFrNnsKBRcTQI+E8=
+github.com/ScienceObjectsDB/go-api v0.1.2-0.20211117110517-083168991be1/go.mod h1:x7GFQck5HU5XDt/f9snaZaKfEjkvQ5zI6NT8n6T9h4o=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e/go.mod h1:3U/XgcO3hCbHZ8TKRvWD2dDTCfh9M9ya+I9JpbB7O8o=
 github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da/go.mod h1:Q73ZrmVTwzkszR9V5SSuryQ31EELlFMUz1kKyl939pY=
