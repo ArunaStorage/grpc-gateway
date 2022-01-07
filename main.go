@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
+	"github.com/ScienceObjectsDB/CORE-API-Gateway/config"
 	"github.com/ScienceObjectsDB/CORE-API-Gateway/gateway"
 	"github.com/jessevdk/go-flags"
-	"github.com/spf13/viper"
 )
 
 var opts struct {
@@ -20,16 +20,7 @@ func main() {
 		log.Fatalln(err.Error())
 	}
 
-	viper.SetConfigFile(opts.ConfigFile)
-
-	err = viper.ReadInConfig()
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
+	config.HandleConfigFile(opts.ConfigFile)
 
 	err = gateway.StartGateway()
 	if err != nil {

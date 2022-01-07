@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ScienceObjectsDB/CORE-API-Gateway/config"
 	service "github.com/ScienceObjectsDB/go-api/api/services/v1"
 	"github.com/ScienceObjectsDB/go-api/openapiv2"
 	"github.com/gin-gonic/gin"
@@ -24,8 +25,8 @@ func StartGateway() error {
 
 	gwmux := runtime.NewServeMux()
 
-	grpcEndpointHost := viper.GetString("Config.Gateway.GRPCEndpointHost")
-	grpcEndpointPort := viper.GetInt("Config.Gateway.GRPCEndpointPort")
+	grpcEndpointHost := viper.GetString(config.BACKEND_HOST)
+	grpcEndpointPort := viper.GetInt(config.BACKEND_PORT)
 
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 
@@ -36,7 +37,7 @@ func StartGateway() error {
 	swagger_fs := http.FS(openapiv2.GetSwaggerEmbedded())
 	r.StaticFS("/swaggerjson", swagger_fs)
 
-	swagger_files := viper.GetString("Config.Swagger.Path")
+	swagger_files := viper.GetString(config.SWAGGER_PATH)
 
 	fs := http.FileSystem(http.Dir(swagger_files))
 
@@ -59,6 +60,7 @@ func StartGateway() error {
 	err = service.RegisterDatasetServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
+
 		return err
 	}
 
@@ -74,7 +76,7 @@ func StartGateway() error {
 		return err
 	}
 
-	port := viper.GetInt("Config.Gateway.Port")
+	port := viper.GetInt(config.SERVER_PORT)
 
 	return r.Run(fmt.Sprintf(":%v", port))
 }
