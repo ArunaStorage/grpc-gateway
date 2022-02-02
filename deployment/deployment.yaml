@@ -21,6 +21,10 @@ spec:
         app.kubernetes.io/part-of: core-server
         app.kubernetes.io/version: v0.1.0
     spec:
+      volumes:
+        - name: config
+          configMap:
+            name: gatewaystorageconfig
       containers:
         - image: harbor.computational.bio.uni-giessen.de/scienceobjectsdb/core-api-gateway:latest
           imagePullPolicy: Always
@@ -34,3 +38,7 @@ spec:
             requests:
               cpu: 500m
               memory: 1000Mi
+          volumeMounts:
+            - name: config
+              mountPath: "/config"
+              readOnly: true
