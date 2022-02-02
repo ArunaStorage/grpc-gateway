@@ -24,7 +24,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: websitestorageconfig
+            name: gatewaystorageconfig
       containers:
         - image: harbor.computational.bio.uni-giessen.de/scienceobjectsdb/core-api-gateway:latest
           imagePullPolicy: Always
