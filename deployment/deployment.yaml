@@ -34,5 +34,3 @@ spec:
             requests:
               cpu: 500m
               memory: 1000Mi
-      imagePullSecrets:
-        - name: harbor
