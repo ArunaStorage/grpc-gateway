@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: core-server-gateway
+  namespace: core-storage-dev
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Grpc-Metadata-accesstoken,Grpc-Metadata-API_TOKEN"
+
+
+    nginx.ingress.kubernetes.io/server-snippet: |
+      underscores_in_headers on;
+      ignore_invalid_headers on;
+spec:
+  rules:
+  - host: "example.com"
+    http:
+      paths:
+      - backend:
+          service:
+            name: core-server-gateway
+            port:
+              name: http-gateway
+        pathType: Prefix
+        path: /
+  tls:
+  - hosts:
+    - "example.com"
+    secretName: gateway-ingress-cert

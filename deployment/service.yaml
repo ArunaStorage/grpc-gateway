@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-server-gateway
+  namespace: core-storage-dev
+spec:
+  selector:
+    app.kubernetes.io/name: gateway
+    app.kubernetes.io/part-of: core-server
+    app.kubernetes.io/version: v0.1.0
+  ports:
+    - protocol: TCP
+      name: http-gateway
+      port: 9000
+      targetPort: 9000
