@@ -15,10 +15,9 @@ const (
 	SERVER_PORT = "Server.Port"
 )
 
-func HandleConfigFile(configFile string) {
+func HandleConfigFile() {
 	SetDefaults()
 
-	viper.SetConfigFile(configFile)
 	viper.SetConfigName("config") // name of config file (without extension)
 	viper.SetConfigType("yaml")   // REQUIRED if the config file does not have the extension in the name
 	viper.AddConfigPath("./config")

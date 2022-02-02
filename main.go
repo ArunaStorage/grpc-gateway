@@ -20,7 +20,7 @@ func main() {
 		log.Fatalln(err.Error())
 	}
 
-	config.HandleConfigFile(opts.ConfigFile)
+	config.HandleConfigFile()
 
 	err = gateway.StartGateway()
 	if err != nil {
