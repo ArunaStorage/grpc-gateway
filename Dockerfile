@@ -15,4 +15,6 @@ COPY config/config.yaml /
 WORKDIR /www
 COPY www .
 
+WORKDIR /
+
 ENTRYPOINT [ "/CORE-API-Gateway", "-c", "/config.yaml" ]
