@@ -32,7 +32,7 @@
 
   <body>
     <div id="swagger-ui"></div>
-    <script id="swagger-settings" type="application/json">{"docExpansion": "list", "deepLinking": false, "showExtensions": true, "defaultModelRendering": "model", "defaultModelExpandDepth": 3, "defaultModelsExpandDepth": 3, "showCommonExtensions": true, "supportedSubmitMethods": ["get", "put", "post", "delete", "options", "head", "patch", "trace"], "validatorUrl": null}</script>
+
     <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
     <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
     <script>
@@ -42,6 +42,7 @@
         url: "/swaggerjson/apidocs.swagger.json",
         dom_id: '#swagger-ui',
         deepLinking: true,
+        validatorUrl: null,
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
