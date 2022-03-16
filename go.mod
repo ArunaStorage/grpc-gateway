@@ -13,7 +13,7 @@ require (
 require github.com/gin-contrib/cors v1.3.1
 
 require (
-	github.com/ScienceObjectsDB/go-api v0.2.1-0.20220224131955-9ecd453f0a92
+	github.com/ScienceObjectsDB/go-api v0.2.1-0.20220314174258-befd44dd92b4
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
