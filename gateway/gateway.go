@@ -10,6 +10,7 @@ import (
 	"github.com/ScienceObjectsDB/CORE-API-Gateway/config"
 	"github.com/ScienceObjectsDB/go-api/openapiv2"
 	v1storageservices "github.com/ScienceObjectsDB/go-api/sciobjsdb/api/storage/services/v1"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/spf13/viper"
@@ -31,6 +32,12 @@ func StartGateway() error {
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 
 	r := gin.Default()
+
+	defaultCors := cors.DefaultConfig()
+	defaultCors.AllowAllOrigins = true
+	defaultCors.AddAllowHeaders("grpc-metadata-accesstoken")
+
+	r.Use(cors.New(defaultCors))
 
 	r.Any("/api/*any", gin.WrapF(gwmux.ServeHTTP))
 
