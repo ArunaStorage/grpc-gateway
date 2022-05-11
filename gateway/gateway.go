@@ -9,6 +9,7 @@ import (
 
 	"github.com/ScienceObjectsDB/CORE-API-Gateway/config"
 	"github.com/ScienceObjectsDB/go-api/openapiv2"
+	v1notificationservices "github.com/ScienceObjectsDB/go-api/sciobjsdb/api/notification/services/v1"
 	v1storageservices "github.com/ScienceObjectsDB/go-api/sciobjsdb/api/storage/services/v1"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -78,6 +79,12 @@ func StartGateway() error {
 	}
 
 	err = v1storageservices.RegisterObjectLoadServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v1notificationservices.RegisterUpdateNotificationServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
