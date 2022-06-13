@@ -58,6 +58,8 @@ github.com/ScienceObjectsDB/go-api v0.2.1-0.20220314174258-befd44dd92b4 h1:1Z2rc
 github.com/ScienceObjectsDB/go-api v0.2.1-0.20220314174258-befd44dd92b4/go.mod h1:Pjr9hQhJFJr82MimdmIUu1PynExZ9RbkM8NTo3Y2dGc=
 github.com/ScienceObjectsDB/go-api v0.3.0-alpha.1 h1:rzylay5RRfWergGVsyqtGBKhgIvAnopnkwQsKPl1axI=
 github.com/ScienceObjectsDB/go-api v0.3.0-alpha.1/go.mod h1:/gNUYEJ/75uFoFDb/6TDquE8ZE2N/OkBR25Wj9CwVq8=
+github.com/ScienceObjectsDB/go-api v0.3.0-alpha.2 h1:UcOfPcA55dbKi9F0udAxF5A493Uq6LHoNvb++SUP5CE=
+github.com/ScienceObjectsDB/go-api v0.3.0-alpha.2/go.mod h1:/gNUYEJ/75uFoFDb/6TDquE8ZE2N/OkBR25Wj9CwVq8=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
