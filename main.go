@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/ScienceObjectsDB/CORE-API-Gateway/config"
-	"github.com/ScienceObjectsDB/CORE-API-Gateway/gateway"
+	"github.com/ArunaStorage/Aruna-REST-Gateway/config"
+	"github.com/ArunaStorage/Aruna-REST-Gateway/gateway"
 	"github.com/jessevdk/go-flags"
 )
 
