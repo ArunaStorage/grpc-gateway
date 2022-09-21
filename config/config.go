@@ -28,8 +28,8 @@ func HandleConfigFile() {
 }
 
 func SetDefaults() {
-	viper.SetDefault(BACKEND_HOST, "127.0.0.1")
-	viper.SetDefault(BACKEND_PORT, 50051)
+	viper.SetDefault(BACKEND_HOST, "aruna-server-service")
+	viper.SetDefault(BACKEND_PORT, 9090)
 	viper.SetDefault(SWAGGER_PATH, "www/swagger")
 	viper.SetDefault(SERVER_PORT, 8080)
 }
