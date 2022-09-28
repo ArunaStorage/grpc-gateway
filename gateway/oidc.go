@@ -72,7 +72,9 @@ func logoutHandler(i OidcHandler) func(c *gin.Context) {
 		serverSession.Set("oidcState", nil)
 		serverSession.Save()
 		logoutUrl := i.Issuer
+		logoutUrl.RawQuery = (url.Values{"redirect_uri": []string{i.ClientUrl.String()}}).Encode()
 		logoutUrl.Path = "protocol/openid-connect/logout"
+		c.Redirect(http.StatusFound, logoutUrl.String())
 	}
 }
 
