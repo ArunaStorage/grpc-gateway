@@ -46,7 +46,7 @@ func initVerifierAndConfig(i OidcHandler) (*oidc.IDTokenVerifier, *oauth2.Config
 	providerCtx := context.Background()
 	provider, err := oidc.NewProvider(providerCtx, i.Issuer.String())
 	if err != nil {
-		log.Fatalf("Failed to init OIDC provider. Error: %v \n", err.Error())
+		log.Fatalf("Failed to init OIDC provider. Error: %v, url: %v \n", err.Error(), i.Issuer.String())
 	}
 	oidcConfig := &oidc.Config{
 		ClientID: i.ClientId,
