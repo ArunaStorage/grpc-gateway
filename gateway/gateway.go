@@ -35,6 +35,7 @@ func StartGateway() error {
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
+	fmt.Println(viper.AllSettings())
 	gwmux := runtime.NewServeMux(runtime.WithIncomingHeaderMatcher(CustomHeaderMatcher))
 
 	grpcEndpointHost := viper.GetString(config.BACKEND_HOST)

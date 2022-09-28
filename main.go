@@ -12,7 +12,7 @@ var opts struct {
 	ConfigFile string `short:"c" long:"configfile" description:"File of the config file" default:"config/config-local.yaml"`
 }
 
-func main() {
+func init() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	_, err := flags.Parse(&opts)
@@ -21,8 +21,10 @@ func main() {
 	}
 
 	config.HandleConfigFile()
+}
 
-	err = gateway.StartGateway()
+func main() {
+	err := gateway.StartGateway()
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
