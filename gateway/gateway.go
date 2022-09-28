@@ -93,6 +93,9 @@ func StartGateway() error {
 
 	r.StaticFS("/swagger-ui/", fs)
 
+	fs_ui := http.FileSystem(http.Dir("www/ui"))
+	r.StaticFS("/ui", fs_ui)
+
 	err = v1storageservices.RegisterProjectServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
