@@ -11,7 +11,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o COR
 FROM scratch
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /CORE-API-Gateway/CORE-API-Gateway .
-COPY config/config.yaml /config
+COPY config/config.yaml /config/config.yaml
 WORKDIR /www
 COPY www .
 
