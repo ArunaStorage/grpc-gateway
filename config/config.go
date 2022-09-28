@@ -7,17 +7,17 @@ import (
 )
 
 const (
-	BACKEND_HOST = "Gateway.GRPCEndpointHost"
-	BACKEND_PORT = "Gateway.GRPCEndpointPort"
-
-	SWAGGER_PATH = "Swagger.Path"
-
-	SERVER_PORT = "Server.Port"
+	BACKEND_HOST      = "Gateway.GRPCEndpointHost"
+	BACKEND_PORT      = "Gateway.GRPCEndpointPort"
+	SWAGGER_PATH      = "Swagger.Path"
+	SERVER_PORT       = "Server.Port"
+	SERVER_BASE_URL   = "Server.BaseUrl"
+	KEYCLOAK_URL      = "KeyCloak.Url"
+	KEYCLOAK_CLIENTID = "KeyCloak.ClientId"
+	KEYCLOAK_SECRET   = "KeyCloak.Secret"
 )
 
 func HandleConfigFile() {
-	SetDefaults()
-
 	viper.SetConfigName("config") // name of config file (without extension)
 	viper.SetConfigType("yaml")   // REQUIRED if the config file does not have the extension in the name
 	viper.AddConfigPath("./config")
@@ -25,11 +25,4 @@ func HandleConfigFile() {
 	if err != nil {             // Handle errors reading the config file
 		panic(fmt.Errorf("fatal error config file: %w", err))
 	}
-}
-
-func SetDefaults() {
-	viper.SetDefault(BACKEND_HOST, "aruna-server-service")
-	viper.SetDefault(BACKEND_PORT, 9090)
-	viper.SetDefault(SWAGGER_PATH, "www/swagger")
-	viper.SetDefault(SERVER_PORT, 8080)
 }

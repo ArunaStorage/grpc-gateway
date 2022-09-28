@@ -1,7 +1,13 @@
 Config:
     Gateway:
-        Port: 9000
-        GRPCEndpointHost: "core-server.core-storage-dev"
-        GRPCEndpointPort: 9000
+        GRPCEndpointHost: "aruna-server-service"
+        GRPCEndpointPort: 9090
     Swagger:
-        Path: "/www/swagger/"
+        Path: "www/swagger"
+    Server:
+        Port: 8080
+        BaseUrl: "https://localhost"
+    KeyCloak:
+        Url: "keycloak.localhost"
+        ClientId: "XXXXXX"
+        Secret: "XXXXX"
