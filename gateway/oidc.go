@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"math/rand"
 	"net/http"
@@ -73,7 +74,7 @@ func logoutHandler(i OidcHandler) func(c *gin.Context) {
 		serverSession.Save()
 		logoutUrl := i.Issuer
 		logoutUrl.RawQuery = (url.Values{"redirect_uri": []string{i.ClientUrl.String()}}).Encode()
-		logoutUrl.Path = "protocol/openid-connect/logout"
+		logoutUrl.Path = fmt.Sprintf("auth/realms/%v/protocol/openid-connect/logout", i.ClientId)
 		c.Redirect(http.StatusFound, logoutUrl.String())
 	}
 }
@@ -128,10 +129,10 @@ func callbackHandler(i OidcHandler, verifier *oidc.IDTokenVerifier, config *oaut
 		}
 
 		c.SetCookie(
-			"aruna-token", rawIDToken, 60*60*24, "/", "localhost", true, true,
+			"aruna-token", rawIDToken, 60*60*24, "/", i.ClientUrl.Host, true, true,
 		)
 		log.Println("Success: Redirecting!")
-		c.Redirect(http.StatusFound, "ui")
+		c.Redirect(http.StatusFound, fmt.Sprintf("%vui", i.ClientUrl.String()))
 	}
 }
 func loginHandler(i OidcHandler) func(c *gin.Context) {
@@ -140,7 +141,7 @@ func loginHandler(i OidcHandler) func(c *gin.Context) {
 		authorized := serverSession.Get("oidcAuthorized")
 		if (authorized != nil && authorized.(bool)) ||
 			c.Request.URL.Path == "oidc-callback" {
-			c.Next()
+			c.Redirect(http.StatusFound, fmt.Sprintf("%vui", i.ClientUrl.String()))
 			return
 		}
 		state := RandomString(16)
