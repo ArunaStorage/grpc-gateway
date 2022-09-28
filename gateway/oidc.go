@@ -128,7 +128,12 @@ func callbackHandler(i OidcHandler, verifier *oidc.IDTokenVerifier, config *oaut
 		c.SetCookie(
 			"aruna-token", rawIDToken, 60*60*24, "/", "localhost", true, true,
 		)
-		c.Redirect(http.StatusFound, "/ui")
+		log.Println("Success: Redirecting!")
+		url, err := url.Parse("/ui")
+		if handleError(c, i, err, "failed save sessions.") {
+			return
+		}
+		c.Redirect(http.StatusFound, url.RequestURI())
 	}
 }
 func loginHandler(i OidcHandler) func(c *gin.Context) {
@@ -156,6 +161,7 @@ func handleError(c *gin.Context, i OidcHandler, err error, message string) bool 
 	if err == nil {
 		return false
 	}
+	log.Printf("Error in request: %v, message: %v", err, message)
 	c.Error(errors.New(message))
 	c.Abort()
 	return true
