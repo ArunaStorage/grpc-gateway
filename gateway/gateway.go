@@ -70,7 +70,7 @@ func StartGateway() error {
 
 	defaultCors := cors.DefaultConfig()
 	defaultCors.AllowAllOrigins = true
-	defaultCors.AddAllowHeaders("grpc-metadata-accesstoken")
+	defaultCors.AddAllowHeaders("Authorization")
 
 	r.Use(cors.New(defaultCors))
 
