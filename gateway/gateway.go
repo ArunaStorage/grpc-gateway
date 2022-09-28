@@ -46,6 +46,8 @@ func StartGateway() error {
 
 	issuer, err := url.Parse(viper.GetString(config.KEYCLOAK_URL))
 
+	log.Printf("The issues urls is: %v", issuer.String())
+	log.Printf("The issues urls-original is: %v", viper.GetString(config.KEYCLOAK_URL))
 	if err != nil {
 		log.Fatal(err)
 	}
