@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/ArunaStorage/Aruna-REST-Gateway/config"
 	v1storageservices "github.com/ArunaStorage/go-api/aruna/api/storage/services/v1"
 	"github.com/ArunaStorage/go-api/openapiv2"
 	"github.com/coreos/go-oidc"
@@ -38,8 +37,8 @@ func StartGateway() error {
 	fmt.Println(viper.AllSettings())
 	gwmux := runtime.NewServeMux(runtime.WithIncomingHeaderMatcher(CustomHeaderMatcher))
 
-	grpcEndpointHost := viper.GetString(config.BACKEND_HOST)
-	grpcEndpointPort := viper.GetInt(config.BACKEND_PORT)
+	grpcEndpointHost := viper.GetString("config.gateway.grpcendpointhost")
+	grpcEndpointPort := viper.GetInt("config.gateway.grpcendpointport")
 
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 
@@ -48,12 +47,12 @@ func StartGateway() error {
 	issuer, err := url.Parse(viper.GetString("config.keycloak.url"))
 
 	log.Printf("The issues urls is: %v", issuer.String())
-	log.Printf("The issues urls-original is: %v", viper.GetString(config.KEYCLOAK_URL))
+	log.Printf("The issues urls-original is: %v", viper.GetString("config.keycloak.url"))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	clurl, err := url.Parse(viper.GetString(config.SERVER_BASE_URL))
+	clurl, err := url.Parse(viper.GetString("config.server.baseurl"))
 
 	if err != nil {
 		log.Fatal(err)
@@ -61,8 +60,8 @@ func StartGateway() error {
 
 	oauthz := OidcHandler{
 		Router:       r,
-		ClientId:     viper.GetString(config.KEYCLOAK_CLIENTID),
-		ClientSecret: viper.GetString(config.KEYCLOAK_SECRET),
+		ClientId:     viper.GetString("config.keycloak.clientid"),
+		ClientSecret: viper.GetString("config.keycloak.secret"),
 		Issuer:       *issuer,                                        //the URL identifier for the authorization service. for example: "https://accounts.google.com" - try adding "/.well-known/openid-configuration" to the path to make sure it's correct
 		ClientUrl:    *clurl,                                         //your website's/service's URL for example: "http://localhost:8081/" or "https://mydomain.com/
 		Scopes:       []string{oidc.ScopeOpenID, "profile", "email"}, //OAuth scopes. If you're unsure go with: []string{oidc.ScopeOpenID, "profile", "email"}
@@ -82,7 +81,7 @@ func StartGateway() error {
 	swagger_fs := http.FS(openapiv2.GetSwaggerEmbedded())
 	r.StaticFS("/swaggerjson", swagger_fs)
 
-	swagger_files := viper.GetString(config.SWAGGER_PATH)
+	swagger_files := viper.GetString("config.swagger.path")
 
 	fs := http.FileSystem(http.Dir(swagger_files))
 
@@ -136,7 +135,7 @@ func StartGateway() error {
 		return err
 	}
 
-	port := viper.GetInt(config.SERVER_PORT)
+	port := viper.GetInt("config.server.port")
 
 	return r.Run(fmt.Sprintf(":%v", port))
 }
