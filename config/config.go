@@ -27,5 +27,4 @@ func HandleConfigFile() {
 		panic(fmt.Errorf("fatal error config file: %w", err))
 	}
 
-	fmt.Println(viper.AllSettings())
 }
