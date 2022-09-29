@@ -19,15 +19,6 @@ import (
 	"google.golang.org/grpc"
 )
 
-func CustomHeaderMatcher(key string) (string, bool) {
-	switch key {
-	case "Authorization":
-		return key, true
-	default:
-		return runtime.DefaultHeaderMatcher(key)
-	}
-}
-
 // StartETLGateway Starts the gateway server for the ETL component
 func StartGateway() error {
 	ctx := context.Background()
@@ -35,7 +26,7 @@ func StartGateway() error {
 	defer cancel()
 
 	fmt.Println(viper.AllSettings())
-	gwmux := runtime.NewServeMux(runtime.WithIncomingHeaderMatcher(CustomHeaderMatcher))
+	gwmux := runtime.NewServeMux()
 
 	grpcEndpointHost := viper.GetString("config.gateway.grpcendpointhost")
 	grpcEndpointPort := viper.GetInt("config.gateway.grpcendpointport")
