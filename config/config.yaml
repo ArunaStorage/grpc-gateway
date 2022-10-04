@@ -6,8 +6,3 @@ Config:
         Path: "www/swagger"
     Server:
         Port: 8080
-        BaseUrl: "https://localhost"
-    KeyCloak:
-        Url: "keycloak.localhost"
-        ClientId: "XXXXXX"
-        Secret: "XXXXX"
