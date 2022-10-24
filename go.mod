@@ -3,13 +3,13 @@ module github.com/ArunaStorage/Aruna-REST-Gateway
 go 1.19
 
 require (
-	github.com/ArunaStorage/go-api v0.5.0-alpha.5
+	github.com/ArunaStorage/go-api v0.5.0-beta.3
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.8.1
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.3
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.12.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/spf13/viper v1.13.0
-	google.golang.org/grpc v1.49.0
+	google.golang.org/grpc v1.50.1
 )
 
 require (
@@ -39,8 +39,8 @@ require (
 	golang.org/x/crypto v0.0.0-20220926161630-eccd6366d1be // indirect
 	golang.org/x/net v0.0.0-20220927171203-f486391704dc // indirect
 	golang.org/x/sys v0.0.0-20220927170352-d9d178bc13c6 // indirect
-	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20220927151529-dcaddaf36704 // indirect
+	golang.org/x/text v0.3.8 // indirect
+	google.golang.org/genproto v0.0.0-20221014213838-99cd37c6964a // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
