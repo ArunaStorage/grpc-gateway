@@ -7,10 +7,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ArunaStorage/go-api/openapiv2"
-	//v2notificationservice "github.com/ArunaStorage/go-api/v2/aruna/api/notification/services/v2" Not implemented yet
-	v2hooksservice "github.com/ArunaStorage/go-api/v2/aruna/api/hooks/services/v2"
+	v2hookservice "github.com/ArunaStorage/go-api/v2/aruna/api/hooks/services/v2"
 	v2storageservices "github.com/ArunaStorage/go-api/v2/aruna/api/storage/services/v2"
+	"github.com/ArunaStorage/go-api/v2/openapiv2"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
@@ -57,7 +56,7 @@ func StartGateway() error {
 
 	r.StaticFS("/swagger-ui/", fs)
 
-	err := v2hooksservice.RegisterHooksServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err := v2hookservice.RegisterHooksServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
