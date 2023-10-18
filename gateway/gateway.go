@@ -7,8 +7,10 @@ import (
 	"fmt"
 	"net/http"
 
-	v1storageservices "github.com/ArunaStorage/go-api/aruna/api/storage/services/v1"
 	"github.com/ArunaStorage/go-api/openapiv2"
+	//v2notificationservice "github.com/ArunaStorage/go-api/v2/aruna/api/notification/services/v2" Not implemented yet
+	v2hooksservice "github.com/ArunaStorage/go-api/v2/aruna/api/hooks/services/v2"
+	v2storageservices "github.com/ArunaStorage/go-api/v2/aruna/api/storage/services/v2"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
@@ -55,44 +57,80 @@ func StartGateway() error {
 
 	r.StaticFS("/swagger-ui/", fs)
 
-	err := v1storageservices.RegisterProjectServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err := v2hooksservice.RegisterHooksServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
 
-	err = v1storageservices.RegisterCollectionServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err = v2storageservices.RegisterAuthorizationServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterCollectionServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterDatasetServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterEndpointServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterStorageStatusServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterObjectServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterProjectServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	err = v2storageservices.RegisterRelationsServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 
 		return err
 	}
 
-	err = v1storageservices.RegisterObjectServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err = v2storageservices.RegisterSearchServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
 
-	err = v1storageservices.RegisterObjectGroupServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err = v2storageservices.RegisterServiceAccountServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
 
-	err = v1storageservices.RegisterEndpointServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err = v2storageservices.RegisterUserServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
 	}
 
-	err = v1storageservices.RegisterUserServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
-	if err != nil {
-		log.Println(err.Error())
-		return err
-	}
-
-	err = v1storageservices.RegisterStorageInfoServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	err = v2storageservices.RegisterWorkspaceServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
 	if err != nil {
 		log.Println(err.Error())
 		return err
