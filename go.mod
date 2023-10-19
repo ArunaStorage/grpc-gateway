@@ -3,7 +3,7 @@ module github.com/ArunaStorage/Aruna-REST-Gateway
 go 1.21
 
 require (
-	github.com/ArunaStorage/go-api/v2 v2.0.0-alpha.2
+	github.com/ArunaStorage/go-api/v2 v2.0.0-alpha.3
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.18.0

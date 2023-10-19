@@ -41,7 +41,7 @@ func StartGateway() error {
 
 	r.Use(cors.New(defaultCors))
 
-	r.Any("/v1/*any", gin.WrapF(gwmux.ServeHTTP))
+	r.Any("/v2/*any", gin.WrapF(gwmux.ServeHTTP))
 
 	swagger_fs := http.FS(openapiv2.GetSwaggerEmbedded())
 	r.StaticFS("/swaggerjson", swagger_fs)
