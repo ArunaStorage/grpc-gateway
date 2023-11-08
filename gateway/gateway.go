@@ -140,7 +140,13 @@ func StartGateway() error {
 		log.Println(err.Error())
 		return err
 	}
-	
+
+	err = v2storageservices.RegisterDataReplicationServiceHandlerFromEndpoint(ctx, gwmux, fmt.Sprintf("%v:%v", grpcEndpointHost, grpcEndpointPort), opts)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
 	port := viper.GetInt("config.server.port")
 
 	return r.Run(fmt.Sprintf(":%v", port))
