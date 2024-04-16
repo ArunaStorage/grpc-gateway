@@ -5,3 +5,5 @@ Config:
         GRPCEndpointPort: 50051
     Swagger:
         Path: "www/swagger/"
+    Server:
+        Port: 8080
