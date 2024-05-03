@@ -1,6 +1,6 @@
 # Aruna API-Gateway
 
-API Gateway for the [**Aruna API**](https://github.com/ArunaStorage/api) based on gRPC-Gateway.
+API Gateway for the [**Aruna API**](https://github.com/ArunaStorage/api) based on gRPC-Gateway. This translates RESTful http calls into native gRPC API calls. 
 
 ## Configuration parameters
 
